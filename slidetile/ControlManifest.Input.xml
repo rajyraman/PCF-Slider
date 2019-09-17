@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="RYR.PCFCanvasApps" constructor="SlideTile" version="1.2.0" display-name-key="Sliding Tiles" description-key="Sliding Tiles" control-type="standard">
+  <control namespace="RYR.PCFCanvasApps" constructor="SlideTile" version="1.7.0" display-name-key="Sliding Tiles" description-key="Sliding Tiles" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="tiles" display-name-key="Tiles to display" description-key="Tiles to display" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="backgroundColour" display-name-key="Background Colour" description-key="Background Colour" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="backgroundColour" display-name-key="Background Colour" description-key="Background Colour" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="tileSize" display-name-key="Tile size" description-key="Tile size" of-type="Whole.None" usage="bound" required="false" />
     <property name="tilesOutput" display-name-key="Tile output" description-key="Tile output" of-type="SingleLine.Text" usage="output" required="true" />
     <!-- 
       Property node's of-type attribute can be of-type-group attribute. 

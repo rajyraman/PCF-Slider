@@ -1,7 +1,8 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Tile, { ITileProps } from "./Tile";
+import Tile from "./Tile";
+import { ITileProps } from "./Interfaces";
 
 export class SlideTile
   implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -11,7 +12,8 @@ export class SlideTile
   private _notifyOutputChanged: () => void;
   private _props: ITileProps = {
     tiles: "",
-    backgroundColour: null
+    backgroundColour: "#2962ff",
+    tileSize: 150
   };
   private onTileReordered(tiles: string[]) {
     this._tiles = tiles;
@@ -51,12 +53,10 @@ export class SlideTile
    */
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     // Add code to update control view
-    if (this._context.parameters.tiles.raw! == "val") {
-      this._props.tiles = "a,b,c,d,e,f";
-    } else {
-      this._props.tiles = this._context.parameters.tiles.raw!;
-    }
-    this._props.backgroundColour = this._context.parameters.backgroundColour.raw;
+    this._props.tiles = this._context.parameters.tiles.raw || "";
+    this._props.backgroundColour =
+      this._context.parameters.backgroundColour.raw || "#2962ff";
+    this._props.tileSize = this._context.parameters.tileSize.raw || 150;
     ReactDOM.render(React.createElement(Tile, this._props), this._container);
   }
 
